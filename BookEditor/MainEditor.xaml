@@ -1,0 +1,79 @@
+﻿<Window  
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:editor="clr-namespace:BookEdit.Editor"
+    x:Class="BookEdit.Editor.MainEditor"
+    Icon="/icon/icon_32.ico"
+    Width ="1000"
+    Title="BookEditor V0.1 Beat by RY.smp using WPF" ResizeMode="NoResize">
+    <Grid>
+        <Grid.Resources>
+             <!-- ORDER TEMPLATE --><!--
+            <HierarchicalDataTemplate 
+              x:Key="ChapterTemplate"
+              ItemsSource="{Binding Path=OrderDetails}"
+              ItemTemplate="{StaticResource OrderDetailTemplate}"
+              >
+                <TextBlock Text="{Binding Path=Desc}" />
+            </HierarchicalDataTemplate>-->           
+            
+            <!-- ORDER DETAIL TEMPLATE -->
+            <HierarchicalDataTemplate
+                x:Key="ChildrenTemplate">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>
+                        <TextBlock Text="{Binding Path= Src}" />
+                    </TextBlock>
+                </StackPanel>
+            </HierarchicalDataTemplate>
+
+            <HierarchicalDataTemplate 
+                x:Key="NodeTemplate"
+                ItemsSource="{Binding Path=ChildrenList}"
+                >
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>
+                        <TextBlock Text="{Binding Path=TitlePrifix}" />
+                        <TextBlock Text=":" />
+                        <TextBlock Text="{Binding Path=Title}" />
+                    </TextBlock>
+                    
+                </StackPanel>
+            </HierarchicalDataTemplate>
+            <!-- Chapter TEMPLATE -->
+            <HierarchicalDataTemplate 
+                x:Key="ChapterTemplate"
+                ItemsSource="{Binding Path=ChildrenList}"
+                ItemTemplate="{StaticResource NodeTemplate}"
+                >
+                <StackPanel Orientation="Vertical">
+                    <TextBlock>
+                        <TextBlock Text="{Binding Path=TitlePrifix}" />
+                        <TextBlock Text=":" />
+                        <TextBlock Text="{Binding Path=Title}" />
+                    </TextBlock>
+                </StackPanel>
+            </HierarchicalDataTemplate>
+        </Grid.Resources>
+        
+        <TreeView
+            Name="MenuTreeView"
+            ItemsSource="{Binding Path=.}"
+            ItemTemplate="{StaticResource ChapterTemplate}" SelectedItemChanged="TreeView_SelectedItemChanged"
+            />
+        <Grid Background="#FFE5E5E5" Margin="228,0,0,0">
+            <StackPanel Margin="0">
+                <RichTextBox AcceptsReturn="True" IsReadOnly="True" BorderBrush="DarkSlateBlue" VerticalScrollBarVisibility="Auto" 
+                            HorizontalAlignment="Stretch" Margin="0" Cursor="Pen" MinHeight="598" Name="RichTextBox" MaxHeight="598" MaxWidth="768" Height="487">
+                    <FlowDocument 
+                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        >
+                    </FlowDocument>
+                </RichTextBox>
+            </StackPanel>
+        </Grid>
+    </Grid>
+
+</Window>
+  

@@ -1,0 +1,18 @@
+﻿<Window x:Class="BookEdit.Editor.MenuTest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MenuTest" Height="300" Width="300">
+    <Grid>
+        <Menu>
+            <MenuItem Header="222">
+                <MenuItem Header="111111" />
+                <MenuItem Header="22222222" />
+                <MenuItem Header="33333333" />
+            </MenuItem>
+            <MenuItem Header="3333" />
+            <MenuItem Header="4444" />
+            <MenuItem Header="5555555" />
+        </Menu>
+
+    </Grid>
+</Window>
