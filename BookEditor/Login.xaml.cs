@@ -29,6 +29,7 @@ namespace BookEdit.Editor
 
         private int loginresult = 0;
 
+        //in order to test git's work type, i add this code!
 
 
 
